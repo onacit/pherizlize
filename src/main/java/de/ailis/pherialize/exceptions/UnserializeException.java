@@ -36,6 +36,9 @@ public class UnserializeException extends PherializeException
 {
     /** Serial version UID */
     private static final long serialVersionUID = -7127648595193318947L;
+    /**
+     * Index of character in input string when processing the error occurred.
+     */
     public final int position;
 
     /**
