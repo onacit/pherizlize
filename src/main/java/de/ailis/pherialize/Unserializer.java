@@ -124,12 +124,43 @@ public class Unserializer
                 result = unserializeReference();
                 break;
 
+            case 'O':
+                result = unserializePhpObject();
+                break;
+
             default:
                 throw new UnserializeException( "Unable to unserialize unknown type " + type, this.pos);
         }
 
         this.history.add(result);
         return result;
+    }
+
+    /**
+     * Unserializes the next object in the data stream into a array.
+     * @return The unserialized stdClass object as array.
+     */
+    private Mixed unserializePhpObject() {
+        String className = unserializeUnencodedString();
+        this.pos -= 2;
+        if (!className.equals("stdClass")) {
+            throw new RuntimeException("stdClass objects only supported. `" + className + "' received.");
+        }
+        return unserializeArray();
+    }
+
+    /**
+     * Unserializes the next object in the data stream into a String.
+     * @return The raw unserialized string.
+     */
+    private String unserializeUnencodedString()
+    {
+        int pos, length;
+
+        pos = this.data.indexOf(':', this.pos + 2);
+        length = Integer.parseInt(this.data.substring(this.pos + 2, pos));
+        this.pos = pos + length + 4;
+        return this.data.substring(pos + 2, pos + 2 + length);
     }
 
 
@@ -141,13 +172,7 @@ public class Unserializer
 
     private Mixed unserializeString()
     {
-        int pos, length;
-
-        pos = this.data.indexOf(':', this.pos + 2);
-        length = Integer.parseInt(this.data.substring(this.pos + 2, pos));
-        this.pos = pos + length + 4;
-        String unencoded = this.data.substring(pos + 2, pos + 2 + length);
-        return new Mixed(encode(unencoded, charset));
+        return new Mixed(encode(unserializeUnencodedString(), charset));
     }
 
 

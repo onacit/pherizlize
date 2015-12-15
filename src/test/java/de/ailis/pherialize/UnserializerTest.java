@@ -63,6 +63,21 @@ public class UnserializerTest extends TestCase
 
 
     /**
+     * Tests unserializing a string
+     */
+
+    public void testPhpObject()
+    {
+        String data;
+
+        data = "a:1:{i:0;a:1:{i:0;O:8:\"stdClass\":2:{s:2:\"ID\";s:1:\"1\";s:22:\"unix_post_modified_gmt\";s:10:\"1446077061\";}}}";
+        Mixed result = Pherialize.unserialize(data);
+
+    }
+
+
+
+    /**
      * Tests unserializing a UTF-8 string
      */
     public void testUnserializeUnicodeString()
