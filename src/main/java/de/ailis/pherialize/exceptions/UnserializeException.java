@@ -36,55 +36,63 @@ public class UnserializeException extends PherializeException
 {
     /** Serial version UID */
     private static final long serialVersionUID = -7127648595193318947L;
-
+    /**
+     * Index of character in input string when processing the error occurred.
+     */
+    public final int position;
 
     /**
      * Constructor
+     * @param position
      */
 
-    public UnserializeException()
+    public UnserializeException(int position)
     {
         super();
+        this.position = position;
     }
 
 
     /**
      * Constructor
-     * 
+     *
+     * @param position
      * @param message
-     *            The exception message
      */
 
-    public UnserializeException(final String message)
+    public UnserializeException(final String message, int position)
     {
         super(message);
+        this.position = position;
     }
 
 
     /**
      * Constructor
-     * 
-     * @param message
+     *  @param message
      *            The exception message
      * @param cause
-     *            The root cause
+     * @param position
      */
 
-    public UnserializeException(final String message, final Throwable cause)
+    public UnserializeException(final String message, final Throwable cause, int position)
     {
         super(message, cause);
+        this.position = position;
     }
 
 
     /**
      * Constructor
-     * 
+     *
      * @param cause
      *            The root cause
+     * @param position
      */
 
-    public UnserializeException(final Throwable cause)
+    public UnserializeException(final Throwable cause, int position)
     {
         super(cause);
+        this.position = position;
     }
 }
