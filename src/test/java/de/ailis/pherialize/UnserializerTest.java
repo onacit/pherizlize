@@ -57,7 +57,7 @@ public class UnserializerTest extends TestCase
     {
         String data;
 
-        data = "s:4:\"Test\"";
+        data = "s:4:\"Test\";";
         assertEquals("Test", Pherialize.unserialize(data).toString());
     }
 
@@ -180,7 +180,7 @@ public class UnserializerTest extends TestCase
      * Tests unserializing an array with a reference in it.
      */
 
-    public void testPherializeeference()
+    public void testUnserializeReference()
     {
         MixedArray test;
 
