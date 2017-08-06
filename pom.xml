@@ -48,8 +48,8 @@
 	</properties>
 
 	<scm>
-		<connection>scm:git:git://github.com/karlvr/${project.artifactId}.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com/karlvr/${project.artifactId}.git</developerConnection>
+		<connection>scm:git:git@github.com:karlvr/${project.artifactId}.git</connection>
+		<developerConnection>scm:git:git@github.com/karlvr/${project.artifactId}.git</developerConnection>
 		<url>http://github.com/karlvr/${project.artifactId}</url>
 	</scm>
 
