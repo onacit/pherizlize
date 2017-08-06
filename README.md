@@ -44,6 +44,12 @@ The Unserializer supports the following PHP data types:
 References are supported, too. This allows you to serialize and unserialize
 even complex types with circular references in it.
 
+About this repository
+---------------------
+
+As the [original project](https://github.com/kayahr/pherialize) hasn't been updated in a number of years, and there are various
+patches scattered amongst the forks, I've collected the patches that I think are important, and published it in Maven Central
+to make it easier to use.
 
 License
 -------
@@ -72,22 +78,13 @@ DEALINGS IN THE SOFTWARE.
 Download
 --------
 
-The JAR can be downloaded from my [Maven Repository][1] or if you are
-using Maven you can simply add it as a dependency:
-
-    <repositories>
-      <repository>
-        <id>ailis-releases</id>
-        <name>Ailis Maven Releases</name>
-        <url>http://nexus.ailis.de/content/groups/public/</url>
-      </repository>
-    </repositories>
+The JAR is in the Maven central repository:
 
     <dependencies>
       <dependency>   
-        <groupId>de.ailis.pherialize</groupId>
+        <groupId>com.xk72</groupId>
         <artifactId>pherialize</artifactId>
-        <version>1.2.1</version>
+        <version>1.2.4</version>
       </dependency>
     </dependencies>
 
