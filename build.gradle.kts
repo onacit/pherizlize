@@ -18,8 +18,8 @@ dependencies {
     testImplementation(libs.junit.junit)
 }
 
-group = "com.xk72"
-version = "1.2.4"
+group = "io.github.penekhun"
+version = "1.2.5"
 description = "Pherialize"
 java.sourceCompatibility = JavaVersion.VERSION_1_6
 
