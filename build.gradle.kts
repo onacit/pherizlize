@@ -21,7 +21,7 @@ dependencies {
 group = "io.github.penekhun"
 version = "1.2.5"
 description = "Pherialize"
-java.sourceCompatibility = JavaVersion.VERSION_1_6
+java.sourceCompatibility = JavaVersion.VERSION_17
 
 publishing {
     publications.create<MavenPublication>("maven") {
