@@ -26,6 +26,7 @@ package de.ailis.pherialize;
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.math.BigDecimal;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -158,6 +159,9 @@ public class Serializer
         {
             serializeLong(((Long) object).longValue(), buffer);
         }
+        else if (object instanceof BigDecimal) {
+            serializeBigDecimal((BigDecimal) object, buffer);
+        }
         else if (object instanceof Double)
         {
             serializeDouble(((Double) object).doubleValue(), buffer);
@@ -203,6 +207,15 @@ public class Serializer
 
         this.history.add(object);
     }
+
+    private void serializeBigDecimal(BigDecimal object, StringBuffer buffer) {
+        buffer.append("d:");
+        String numberStr = object.toPlainString();
+        buffer.append(numberStr);
+        buffer.append(';');
+        this.history.add(object);
+    }
+
 
 
     /**
@@ -369,7 +382,14 @@ public class Serializer
     private void serializeDouble(final double number, final StringBuffer buffer)
     {
         buffer.append("d:");
-        buffer.append(number);
+        if (Math.floor(number) == number)
+        {
+            buffer.append((long) number);
+        }
+        else
+        {
+            buffer.append(number);
+        }
         buffer.append(';');
     }
 

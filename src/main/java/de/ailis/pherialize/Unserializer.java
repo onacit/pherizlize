@@ -24,6 +24,7 @@
 package de.ailis.pherialize;
 
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
@@ -209,11 +210,11 @@ public class Unserializer
 
     private Mixed unserializeDouble()
     {
-        Double result;
+        BigDecimal result;
         int pos;
 
         pos = this.data.indexOf(';', this.pos + 2);
-        result = Double.valueOf(this.data.substring(this.pos + 2, pos));
+        result = new BigDecimal(this.data.substring(this.pos + 2, pos));
         this.pos = pos + 1;
         return new Mixed(result);
     }

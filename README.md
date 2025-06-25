@@ -25,6 +25,7 @@ Up to now Pherialize can serialize the following Java data types:
 * Long
 * Float
 * Double
+* BigDecimal
 * List
 * Map
 * Arrays
