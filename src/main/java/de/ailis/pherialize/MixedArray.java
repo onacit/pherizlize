@@ -124,14 +124,21 @@ public class MixedArray extends LinkedHashMap<Object, Object>
     @Override
     public Object get(final Object key)
     {
+        Object value;
         if (key instanceof Mixed)
         {
-            return super.get(key);
+            value = super.get(key);
         }
         else
         {
-            return super.get(new Mixed(key));
+            value = super.get(new Mixed(key));
         }
+
+        if (value instanceof Mixed mixed)
+        {
+          return mixed.getValue();
+        }
+        return value;
     }
 
 
@@ -327,7 +334,7 @@ public class MixedArray extends LinkedHashMap<Object, Object>
     public Object put(final Object key, final Object value)
     {
         Mixed mixedKey, mixedValue;
-        
+
         if (!(key instanceof Mixed))
             mixedKey = new Mixed(key);
         else
