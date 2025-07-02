@@ -4,6 +4,8 @@ Pherialize
 Description
 -----------
 
+> https://central.sonatype.com/search?q=io.github.penekhun
+
 Pherialize is a small library allowing serializing Java objects into the
 PHP serializing format and unserializing data from 
 this format back into Java objects.
@@ -276,3 +278,25 @@ conversions because it's completely hidden by the <Mixed wrapper>.
 </table>
   
 [1]: http://nexus.ailis.de/content/repositories/releases/de/ailis/pherialize/pherialize/ "Maven Repository"
+
+
+<!--
+
+## For maintainers
+
+- Set up environment variables
+```bash
+export ORG_GRADLE_PROJECT_mavenCentralUsername=""
+export ORG_GRADLE_PROJECT_mavenCentralPassword=""
+export ORG_GRADLE_PROJECT_signingInMemoryKey=""
+export ORG_GRADLE_PROJECT_signingInMemoryKeyId=""
+export ORG_GRADLE_PROJECT_signingInMemoryKeyPassword=""
+```
+
+- Deploy to maven central manually
+
+```bash
+./gradlew publishMavenPublicationToMavenCentralRepository -PRELEASE_SIGNING_ENABLED=true
+```
+
+-->

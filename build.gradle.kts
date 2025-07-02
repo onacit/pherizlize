@@ -4,14 +4,13 @@
 
 plugins {
     `java-library`
-    `maven-publish`
+    id("com.vanniktech.maven.publish") version "0.33.0"
+    signing
 }
 
 repositories {
     mavenLocal()
-    maven {
-        url = uri("https://repo.maven.apache.org/maven2/")
-    }
+    mavenCentral()
 }
 
 dependencies {
@@ -23,10 +22,39 @@ version = "1.2.5"
 description = "Pherialize"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
-publishing {
-    publications.create<MavenPublication>("maven") {
-        from(components["java"])
+mavenPublishing {
+    coordinates(group.toString(), "pherialize", version.toString())
+
+    pom {
+        name = "Pherialize"
+        description = "Library for serializing Java objects into the PHP serializing format and unserializing data from this format back into Java objects."
+        url = "https://github.com/PENEKhun/pherizlize"
+
+        licenses {
+            license {
+                name = "MIT License"
+                url = "https://opensource.org/license/mit/"
+            }
+        }
+
+        developers {
+            developer {
+                id = "PENEKhun"
+                name = "MoonSeonghun"
+                email = "penekhun@gmail.com"
+                url = "https://github.com/PENEKhun"
+                group = "Owner"
+            }
+        }
+
+        scm {
+            connection = "scm:git:git://github.com/PENEKhun/pherizlize.git"
+            developerConnection = "scm:git:ssh://github.com/PENEKhun/pherizlize.git"
+            url = "http://github.com/PENEKhun/pherizlize"
+        }
     }
+
+    signAllPublications()
 }
 
 tasks.withType<JavaCompile>() {
